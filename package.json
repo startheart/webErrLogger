@@ -2,12 +2,16 @@
   "name": "web-error-logger",
   "version": "0.0.1",
   "description": "web 错误日志上报插件",
-  "main": "dist/0.0.1/logger.min.js",
+  "main": "dist/logger.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node build/dev-server.js",
     "build": "node build/build.js"
   },
+  "files": [
+    "dist/logger.min.js",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://startheart@github.com/startheart/webErrLogger.git"

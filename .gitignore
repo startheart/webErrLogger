@@ -4,5 +4,4 @@ node_modules/
 npm-debug.log
 dist/
 *.zip
-beatlesMap/
-src_babel_build/
+web-error-logger/

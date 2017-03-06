@@ -13,7 +13,7 @@ module.exports = {
     }
   },
   prod: {
-    assetsRoot: path.resolve(__dirname, '../dist/' + version),
+    assetsRoot: path.resolve(__dirname, '../dist/'),
     assetsPublicPath: '//xxx.niubi.com/static/webapp/' + name + '/' + version + '/',
     entry: {
       logger: './src/logger.js'
