@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>web错误日志上报演示</title>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <link rel="stylesheet" href="/static/css/reset.css">
+  <style type="text/css">
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    body, html {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      font-family: 'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif, 'Droid Sans Fallback';
+      -webkit-text-size-adjust: none;
+    }
+
+    p {
+      width: 603px;
+      padding-top: 3px;
+      overflow: hidden;
+    }
+
+    .head {
+      margin: 20px;
+      text-align: center;
+    }
+    .btn {
+      display: block;
+      margin: 0;
+      padding: 17px 16px;
+      width: 100%;
+      line-height: 16px;
+      border-radius: 2px;
+      cursor: pointer;
+      text-align: center;
+      vertical-align: middle;
+      background-image: none;
+      white-space: nowrap;
+      outline: none;
+      font-size: 16px;
+      color: #fff;
+      background: #4a4c5b;
+      border: none;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent
+    }
+    .btn:active {
+      background: #444654
+    }
+    .foot {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <h1 class="head">
+    web错误日志上报演示
+  </h1>
+  <div class="foot">
+    <button id="J_btn" class="btn">
+      <div>点击触发js报错自动发送错误日志</div>
+    </button>
+  </div>
+</div>
+<!-- built files will be auto injected -->
+<script src="<%= htmlWebpackPlugin.files.chunks['Logger'].entry %>"></script>
+<script src="<%= htmlWebpackPlugin.files.chunks['app'].entry %>"></script>
+</body>
+</html>

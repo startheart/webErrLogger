@@ -1,0 +1,8 @@
+.idea/
+node_modules/
+.DS_Store
+npm-debug.log
+dist/
+*.zip
+beatlesMap/
+src_babel_build/
