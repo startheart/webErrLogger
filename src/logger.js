@@ -26,12 +26,12 @@ export default class Logger {
       return
     }
     _isInitlize = true
-    window.onerror = (msg, url, line, col, error) => {
-      // 没有URL不上报！上报也不知道错误
-      if (msg === 'Script error.' && !url) {
-        // return true 会导致控制台不输出error
-        return true
-      }
+    let _onerror = (msg, url, line, col, error) => {
+      // 没有URL不上报！上报也不知道错误,首页只要有错误就上传，因为eval执行代码都没有URL
+      // if (msg === 'Script error.' && !url) {
+      //   // return true 会导致控制台不输出error
+      //   return true
+      // }
       // 采用异步的方式
       // 我遇到过在window.onunload进行ajax的堵塞上报
       // 由于客户端强制关闭webview导致这次堵塞上报有Network Error
@@ -71,11 +71,16 @@ export default class Logger {
           ext = ext.join(',')
           data.msg = ext
         }
+
+        // 首页没有值，就给个默认值也要强行上报
+        data = extend({url: window.location.href, line: 0, col: 0}, data)
+        data.msg = data.msg || navigator.userAgent
         // 把data上报到后台！
         this.fatal(data)
       }, 0)
         //  return true
     }
+    window.addEventListener('error', _onerror, false)
   }
 
   /*
@@ -171,4 +176,13 @@ function each(obj, fn) {
       fn(obj[i], i)
     }
   }
+}
+
+function extend(target, source) {
+  for (let key in source) {
+    if (source[key] !== undefined) {
+      target[key] = source[key]
+    }
+  }
+  return target
 }

@@ -1,6 +1,6 @@
 {
   "name": "web-error-logger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "web 错误日志上报插件",
   "main": "dist/logger.min.js",
   "scripts": {
