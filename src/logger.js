@@ -9,7 +9,7 @@ export default class Logger {
     if (_namespacereg.exec(namespace)) {
       this._namespace = namespace
     } else {
-      throw Error('wf: The namespace do not conform to the rules ' + _namespacereg.toString())
+      throw Error('logger: The namespace do not conform to the rules ' + _namespacereg.toString())
     }
 
     if (!url) {
@@ -146,7 +146,7 @@ export default class Logger {
     let paramAry = []
     let linkElement = document.createElement('LINK')
     linkElement.rel = 'stylesheet'
-    linkElement.media = 'wf'
+    linkElement.media = 'logger'
 
     each(param, function(val, key) {
       if (_opt[key] === undefined) {
