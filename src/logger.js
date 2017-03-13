@@ -18,6 +18,8 @@ export default class Logger {
     url += ~url.indexOf('?') ? '&' : '?'
     this._url = url
 
+    this._lastSrc = ''
+
     this._initialize()
   }
 
@@ -138,26 +140,28 @@ export default class Logger {
    *
    */
   _request(param) {
-    let _linkeRoot = document.head || document.getElementsByTagName('head')[0]
-    let _lifeTime = 5000
-
     let url = this._url
     let _opt = {}
     let paramAry = []
-    let linkElement = document.createElement('LINK')
-    linkElement.rel = 'stylesheet'
-    linkElement.media = 'logger'
+    let linkElement = document.createElement('IMG')
 
     each(param, function(val, key) {
       if (_opt[key] === undefined) {
         paramAry.push(key + '=' + encodeURIComponent(val))
       }
     })
-    linkElement.href = url + paramAry.join('&')
-    _linkeRoot.appendChild(linkElement)
-    setTimeout(function() {
-      _linkeRoot.removeChild(linkElement)
-    }, _lifeTime)
+    linkElement.onload = linkElement.onerror = function() {
+      linkElement.onload = linkElement.onerror = null
+    }
+
+    let curSrc = url + paramAry.join('&')
+
+    if (this._lastSrc === curSrc) {
+      return
+    }
+
+    this._lastSrc = curSrc
+    linkElement.src = curSrc
   }
   /**
    * 设置页面错误标识字段
